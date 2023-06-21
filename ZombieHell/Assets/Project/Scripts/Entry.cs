@@ -1,13 +1,33 @@
 using System;
+using System.Collections.Generic;
+using Project.Scripts.Area.LevelManager.Model;
+using Project.Scripts.Area.LevelManager.Presenter;
+using Project.Scripts.Area.LevelManager.View;
 using UnityEngine;
 
-public class Entry : MonoBehaviour
+namespace Project.Scripts
 {
-    [SerializeField] private GameObject _menuPrefab;
-    [SerializeField] private GameObject _levelPrefab;
-
-    private void Awake()
+    public class Entry : MonoBehaviour, IDisposable
     {
-        Instantiate(_menuPrefab);
+        [SerializeField] private GameObject _menuPrefab;
+        [SerializeField] private GameObject _levelManagerPrefab;
+
+        private readonly List<IDisposable> _disposables = new List<IDisposable>();
+
+        private void Awake()
+        {
+            Instantiate(_menuPrefab);
+            var levelView = Instantiate(_levelManagerPrefab).GetComponent<ILevelView>();
+            var levelModel = new LevelModel();
+            _disposables.Add(new LevelPresenter(levelView, levelModel));
+        }
+
+        public void Dispose()
+        {
+            foreach (var disposable in _disposables)
+            {
+                disposable.Dispose();
+            }
+        }
     }
 }
