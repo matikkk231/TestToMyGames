@@ -6,6 +6,8 @@ namespace Project.Scripts.Area.Zombie.View
 {
     public class ZombieView : MonoBehaviour, IZombieView
     {
+        public Action<int> Damaged { get; set; }
+
         [SerializeField] private Rigidbody _rigidbody;
         private const float _speed = 2;
         private const float _attackDisctance = 2;
@@ -33,6 +35,12 @@ namespace Project.Scripts.Area.Zombie.View
         {
             _rigidbody.velocity =
                 (TargetToChase.position - transform.position).normalized * _speed;
+        }
+
+        public void GetDamage(int damage)
+        {
+            Damaged?.Invoke(damage);
+            Debug.Log("damaged");
         }
 
         private void LookAtTarget()

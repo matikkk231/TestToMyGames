@@ -1,10 +1,16 @@
+using System;
+using Project.Scripts.Area.Gun.View;
+using Project.Scripts.Area.Zombie.View;
 using UnityEngine;
 
 namespace Project.Scripts.Area.Player.View
 {
     public class PlayerView : MonoBehaviour, IPlayerView
     {
+        public Action<int> Damaged { get; set; }
+
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private RifleGunView _gunView;
         private const float _speed = 4;
         private Vector3 _moveDirection;
 
@@ -13,14 +19,21 @@ namespace Project.Scripts.Area.Player.View
             get => transform;
         }
 
+        public IGunView Gun => _gunView;
+
         public void GetDamage(int damage)
         {
+            Damaged?.Invoke(damage);
+        }
+
+        private void Update()
+        {
+            DeclareMoveDirection();
+            Move(_moveDirection);
         }
 
         private void FixedUpdate()
         {
-            DeclareMoveDirection();
-            Move(_moveDirection);
             LookAtMouse();
         }
 
@@ -32,7 +45,8 @@ namespace Project.Scripts.Area.Player.View
             if (Physics.Raycast(ray, out hit))
             {
                 var playerView = hit.collider.GetComponent<PlayerView>();
-                if (playerView == null)
+                var zombieView = hit.collider.GetComponent<ZombieView>();
+                if (playerView == null && zombieView == null)
                 {
                     transform.LookAt(hit.point);
                 }
