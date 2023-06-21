@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a108b1c9-9923-49cf-b205-0f786da25adc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/IMainMenuView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/IMainMenuView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/MainMenuView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/MainMenuView.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation/demo_combat_idle.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation/demo_combat_idle.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation/demo_combat_run.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation/demo_combat_run.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation/demo_combat_shoot.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/animation/demo_combat_shoot.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_soldier_512.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_soldier_512.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_soldier_512.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_soldier_512.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_weapon.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_weapon.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_weapon.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Materials/demo_weapon.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Soldier_demo.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LowPolySoldiers_demo/models/Soldier_demo.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/M_Lava01.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/M_Lava01.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/M_Lava01_Variant01.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/M_Lava01_Variant01.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_ao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_ao.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_basecolor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_basecolor.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_emissive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_emissive.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_metallic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_metallic.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Lava Materials/Lava01/T_Lava01_normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/0-idle_agressive.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/0-idle_agressive.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/1-walk_chase.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/1-walk_chase.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/1-walk_chase_left.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/1-walk_chase_left.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/1-walk_chase_right.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/1-walk_chase_right.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/10-death_fall_backward.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/10-death_fall_backward.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/2-attack_inversed_horizontal_right_hand.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/2-attack_inversed_horizontal_right_hand.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/3-great_damage_torso_front.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/3-great_damage_torso_front.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/ZombieDemo.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAnimationPackFree/Animations/ZombieDemo.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Materials/Zombie.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Materials/Zombie.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Materials/floor.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Materials/floor.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Model.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Model/Zombie.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Model/Zombie.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Prefab/Zombie.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Prefab/Zombie.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Texture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Texture/Zombie_Albedo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Texture/Zombie_Albedo.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Texture/Zombie__NormalMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ZombieAsset/Zombie 1/Texture/Zombie__NormalMap.png.meta" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Project/Scripts/Entry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/IMainMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/IMainMenuView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Project/Scripts/Area/MainMenu/View/MainMenuView.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="2RVYw1Gpflq83HtT4DgTZyIs4Tn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a108b1c9-9923-49cf-b205-0f786da25adc" name="Default Changelist" comment="" />
+      <created>1687336954597</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687336954597</updated>
+      <workItem from="1687336960484" duration="2024000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="601" y="113" key="RiderGenerateDialog" timestamp="1687337488185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="601" y="113" key="RiderGenerateDialog/0.0.1536.824@0.0.1536.824" timestamp="1687337488185" />
+  </component>
+</project>
