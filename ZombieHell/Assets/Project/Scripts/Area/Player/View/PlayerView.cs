@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Project.Scripts.Area.Player.View
@@ -6,8 +5,17 @@ namespace Project.Scripts.Area.Player.View
     public class PlayerView : MonoBehaviour, IPlayerView
     {
         [SerializeField] private Rigidbody _rigidbody;
-        private const float _speed = 2;
+        private const float _speed = 4;
         private Vector3 _moveDirection;
+
+        public Transform Transform
+        {
+            get => transform;
+        }
+
+        public void GetDamage(int damage)
+        {
+        }
 
         private void FixedUpdate()
         {
@@ -23,7 +31,11 @@ namespace Project.Scripts.Area.Player.View
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                transform.LookAt(hit.point);
+                var playerView = hit.collider.GetComponent<PlayerView>();
+                if (playerView == null)
+                {
+                    transform.LookAt(hit.point);
+                }
             }
         }
 

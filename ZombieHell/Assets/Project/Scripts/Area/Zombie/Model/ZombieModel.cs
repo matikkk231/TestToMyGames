@@ -1,12 +1,12 @@
 using System;
 
-namespace Project.Scripts.Area.Player.Model
+namespace Project.Scripts.Area.Zombie.Model
 {
-    public class PlayerModel : IPlayerModel
+    public class ZombieModel : IZombieModel
     {
         public Action Died { get; set; }
         public Action Damaged { get; set; }
-
+        
         public int Health { get; set; }
     }
 }

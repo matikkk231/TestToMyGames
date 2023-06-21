@@ -4,6 +4,8 @@ using Project.Scripts.Area.LevelManager.Model;
 using Project.Scripts.Area.LevelManager.View;
 using Project.Scripts.Area.Player.Model;
 using Project.Scripts.Area.Player.Presenter;
+using Project.Scripts.Area.Zombie.Model;
+using Project.Scripts.Area.Zombie.Presenter;
 
 namespace Project.Scripts.Area.LevelManager.Presenter
 {
@@ -19,6 +21,7 @@ namespace Project.Scripts.Area.LevelManager.Presenter
             _view = levelView;
             _model = levelModel;
             _disposables.Add(new PlayerPresenter(_view.CreatePlayer(), new PlayerModel()));
+            _disposables.Add(new ZombiePresenter(_view.CreateZombie(), new ZombieModel()));
         }
 
         public void Dispose()
