@@ -1,5 +1,4 @@
 using System;
-using Project.Scripts.Area.Player.View;
 using Project.Scripts.Area.Zombie.View;
 using UnityEngine;
 
@@ -23,9 +22,10 @@ namespace Project.Scripts.Area.Gun.View
             Physics.Raycast(transform.position, _attackDirection, out var hit, 40);
             if (hit.collider != null)
             {
-                var zombieView = hit.collider.GetComponent<IZombieView>();
-                if (zombieView != null)
+                var isZombie = hit.collider.CompareTag("Zombie");
+                if (isZombie)
                 {
+                    var zombieView = hit.collider.GetComponent<IZombieView>();
                     zombieView.GetDamage(damage);
                 }
             }
@@ -46,17 +46,12 @@ namespace Project.Scripts.Area.Gun.View
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                var playerView = hit.collider.GetComponent<PlayerView>();
-                if (playerView == null)
+                var isPlayer = hit.collider.CompareTag("Player");
+                if (!isPlayer)
                 {
                     _attackDirection = hit.point - transform.position;
                 }
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.DrawRay(transform.position, _attackDirection);
         }
 
         private void Update()
