@@ -1,6 +1,6 @@
 using System;
+using Project.Scripts.Area.GameCamera.View;
 using Project.Scripts.Area.Gun.View;
-using Project.Scripts.Area.Zombie.View;
 using Project.Scripts.Base.AdoioService.View;
 using UnityEngine;
 
@@ -56,6 +56,22 @@ namespace Project.Scripts.Area.Player.View
                 var oldRotation = transform1.rotation;
                 transform1.rotation = new Quaternion(0, oldRotation.y, 0, oldRotation.w);
             }
+        }
+
+        private void Awake()
+        {
+            CreateCamera();
+        }
+
+        private void CreateCamera()
+        {
+            var camera = Instantiate(new GameObject());
+            camera.name = "Camera";
+            camera.tag = "MainCamera";
+            camera.AddComponent<AudioListener>();
+            camera.AddComponent<Camera>();
+            var cameraView = camera.AddComponent<CameraView>();
+            cameraView.TargetToChase = Transform;
         }
 
         private void DeclareMoveDirection()

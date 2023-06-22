@@ -53,6 +53,7 @@ namespace Project.Scripts.Area.Gun.View
         private void DeclareAttackDirection()
         {
             RaycastHit hit;
+
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {

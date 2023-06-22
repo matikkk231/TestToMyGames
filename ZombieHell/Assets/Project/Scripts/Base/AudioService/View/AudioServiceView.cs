@@ -56,6 +56,7 @@ namespace Project.Scripts.Base.AudioService.View
             }
 
             audioSource = Instantiate(new GameObject()).AddComponent<AudioSource>();
+            audioSource.name = "AudioSource";
             _activeSources.Add(audioSource);
             return audioSource;
         }
