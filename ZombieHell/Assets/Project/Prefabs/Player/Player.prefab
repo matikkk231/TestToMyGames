@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ff0de356fa4bfdbf93d82b83af1efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerAnimator: {fileID: 8294838538950792591}
   _rigidbody: {fileID: 6438483442999201626}
   _gunView: {fileID: 560547510856743025}
 --- !u!54 &6438483442999201626

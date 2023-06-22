@@ -10,11 +10,13 @@ namespace Project.Scripts.Area.Player.View
     {
         public Action<int> Damaged { get; set; }
 
+        [SerializeField] private Animator _playerAnimator;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private RifleGunView _gunView;
         private const float _speed = 4;
         private Vector3 _moveDirection;
         private IAudioServiceView _audioServiceView;
+        private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
         public Transform Transform
         {
@@ -105,6 +107,13 @@ namespace Project.Scripts.Area.Player.View
         private void Move(Vector3 direction)
         {
             _rigidbody.velocity = direction * _speed;
+            if (direction != Vector3.zero)
+            {
+                _playerAnimator.SetBool(IsMoving, true);
+                return;
+            }
+
+            _playerAnimator.SetBool(IsMoving, false);
         }
     }
 }
