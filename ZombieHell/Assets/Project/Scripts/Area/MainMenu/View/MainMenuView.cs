@@ -8,7 +8,7 @@ namespace Project.Scripts.Area.MainMenu.View
     {
         [SerializeField] private TextMeshProUGUI _notificationText;
         private const string _winNotification = "YOU WON BRO";
-        private const string _looseNotification = "YOU LOOSED, TRY AGAIN, LOOSER!";
+        private const string _looseNotification = "YOU LOOSED, TRY AGAIN!";
 
         public void ShowLooseNotify()
         {

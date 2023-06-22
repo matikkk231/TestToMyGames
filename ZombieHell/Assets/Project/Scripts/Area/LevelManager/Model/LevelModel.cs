@@ -11,17 +11,22 @@ namespace Project.Scripts.Area.LevelManager.Model
         public Action<IZombieModel> ZombieRemoved { get; set; }
         public Action<IZombieModel> ZombieSpawned { get; set; }
         public Action<RoundConfig> RoundStarted { get; set; }
+        public Action LevelWon { get; set; }
+        public Action LevelLoosed { get; set; }
 
         private readonly List<IZombieModel> _activeZombies = new List<IZombieModel>();
         private readonly List<IZombieModel> _cachedZombies = new List<IZombieModel>();
 
         private readonly List<RoundConfig> _roundConfigs = new List<RoundConfig>();
         private int _currentRound;
-        public IPlayerModel Player { get; private set; } = new PlayerModel();
+        private int _currentZombie;
+        public IPlayerModel Player { get; private set; }
 
         public LevelModel(List<RoundConfig> roundConfigs)
         {
             _roundConfigs = roundConfigs;
+            Player = new PlayerModel();
+            Player.Died += OnPlayerDied;
         }
 
         public IZombieModel GetNewZombie()
@@ -48,12 +53,34 @@ namespace Project.Scripts.Area.LevelManager.Model
             var isSpawnAllowed = _activeZombies.Count < _roundConfigs[_currentRound].MaxZombiesInGame;
             if (isSpawnAllowed)
             {
-                var zombieConfig = _roundConfigs[_currentRound].ZombieConfigs[0];
-                _roundConfigs[_currentRound].ZombieConfigs.Remove(zombieConfig);
+                if (_currentZombie == _roundConfigs[_currentRound].ZombieConfigs.Count)
+                {
+                    StartNextRound();
+                    return false;
+                }
+
+                _currentZombie++;
                 ZombieSpawned?.Invoke(GetNewZombie());
             }
 
             return isSpawnAllowed;
+        }
+
+        private void StartNextRound()
+        {
+            if (_currentRound + 1 >= _roundConfigs.Count)
+            {
+                LevelWon?.Invoke();
+                return;
+            }
+
+            _currentRound++;
+            RoundStarted?.Invoke(_roundConfigs[_currentRound]);
+        }
+
+        private void OnPlayerDied()
+        {
+            LevelLoosed?.Invoke();
         }
 
         private void OnZombieRemoved(IZombieModel zombieModel)

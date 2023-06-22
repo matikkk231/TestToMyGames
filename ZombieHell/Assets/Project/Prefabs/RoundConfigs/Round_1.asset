@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeBetweenZombieSpawn: 3
   MaxZombiesInGame: 3
-  ZombieConfigs: []
+  ZombieConfigs:
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}

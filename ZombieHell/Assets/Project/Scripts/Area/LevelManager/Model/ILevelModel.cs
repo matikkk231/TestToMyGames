@@ -10,6 +10,8 @@ namespace Project.Scripts.Area.LevelManager.Model
         Action<IZombieModel> ZombieRemoved { get; set; }
         Action<IZombieModel> ZombieSpawned { get; set; }
         Action<RoundConfig> RoundStarted { get; set; }
+        Action LevelWon { get; set; }
+        Action LevelLoosed { get; set; }
         IPlayerModel Player { get; }
 
         IZombieModel GetNewZombie();
