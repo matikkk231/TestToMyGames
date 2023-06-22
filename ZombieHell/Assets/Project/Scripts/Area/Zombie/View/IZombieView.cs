@@ -5,6 +5,7 @@ namespace Project.Scripts.Area.Zombie.View
 {
     public interface IZombieView
     {
+        Action TargetFound { get; set; }
         Action<int> Damaged { get; set; }
         Action<IZombieView> Removed { get; set; }
         public Vector3 Position { get; set; }
@@ -13,5 +14,6 @@ namespace Project.Scripts.Area.Zombie.View
         public void SetActive(bool isActive);
         public void ChaseTarget();
         public void GetDamage(int damage);
+        public void Attack(int damage);
     }
 }

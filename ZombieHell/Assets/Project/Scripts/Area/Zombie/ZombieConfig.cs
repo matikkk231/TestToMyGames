@@ -6,5 +6,6 @@ namespace Project.Scripts.Area.Zombie
     public class ZombieConfig : ScriptableObject
     {
         public int Health;
+        public int DamageAmount;
     }
 }

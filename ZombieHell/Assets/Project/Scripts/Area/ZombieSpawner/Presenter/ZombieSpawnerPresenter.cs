@@ -28,6 +28,7 @@ namespace Project.Scripts.Area.ZombieSpawner.Presenter
             _view.PreparedSpawnZombie += OnPreparedZombieSpawn;
             _model.ZombieSpawned += OnZombieSpawned;
             _model.ZombieSpawningStarted += OnZombieSpawningStarted;
+            _model.ZombieRemoved += OnZombieRemoved;
         }
 
         private void RemoveListeners()
@@ -35,11 +36,25 @@ namespace Project.Scripts.Area.ZombieSpawner.Presenter
             _view.PreparedSpawnZombie -= OnPreparedZombieSpawn;
             _model.ZombieSpawned -= OnZombieSpawned;
             _model.ZombieSpawningStarted -= OnZombieSpawningStarted;
+            _model.ZombieRemoved -= OnZombieRemoved;
         }
 
         private void OnPreparedZombieSpawn()
         {
             _model.TryZombieSpawn();
+        }
+
+        private void OnZombieRemoved(IZombieModel model)
+        {
+            foreach (var zombiePresenter in _zombiePresenters)
+            {
+                if (zombiePresenter.Model == model)
+                {
+                    zombiePresenter.Dispose();
+                    _zombiePresenters.Remove(zombiePresenter);
+                    return;
+                }
+            }
         }
 
         private void OnZombieSpawned(IZombieModel model)

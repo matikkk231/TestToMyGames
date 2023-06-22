@@ -7,12 +7,10 @@ namespace Project.Scripts.Area.Zombie.Model
     {
         public Action Died { get; set; }
         public Action<IZombieModel> Removed { get; set; }
+        public Action<int> Attacked { get; set; }
 
         public int Health { get; set; }
-
-        public ZombieModel()
-        {
-        }
+        public int DamageAmount { get; set; }
 
         public void GetDamage(int damage)
         {
@@ -22,6 +20,11 @@ namespace Project.Scripts.Area.Zombie.Model
                 Died?.Invoke();
                 Removed?.Invoke(this);
             }
+        }
+
+        public void Attack()
+        {
+            Attacked?.Invoke(DamageAmount);
         }
     }
 }

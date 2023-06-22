@@ -27,6 +27,7 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
                 _cachedZombies.Remove(zombie);
                 _activeZombies.Add(zombie);
                 zombie.Health = config.Health;
+                zombie.DamageAmount = config.DamageAmount;
                 zombie.Removed += OnZombieRemoved;
                 return zombie;
             }
@@ -37,6 +38,7 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
                 _activeZombies.Add(zombie);
                 zombie.Removed += OnZombieRemoved;
                 zombie.Health = config.Health;
+                zombie.DamageAmount = config.DamageAmount;
                 return zombie;
             }
         }
