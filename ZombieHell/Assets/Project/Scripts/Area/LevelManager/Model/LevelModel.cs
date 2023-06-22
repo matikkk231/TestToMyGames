@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Project.Scripts.Area.Player.Model;
+using Project.Scripts.Area.Round;
 using Project.Scripts.Area.Zombie.Model;
 
 namespace Project.Scripts.Area.LevelManager.Model
@@ -8,10 +9,20 @@ namespace Project.Scripts.Area.LevelManager.Model
     public class LevelModel : ILevelModel
     {
         public Action<IZombieModel> ZombieRemoved { get; set; }
+        public Action<IZombieModel> ZombieSpawned { get; set; }
+        public Action<RoundConfig> RoundStarted { get; set; }
 
-        private List<IZombieModel> _activeZombies = new List<IZombieModel>();
-        private List<IZombieModel> _cachedZombies = new List<IZombieModel>();
+        private readonly List<IZombieModel> _activeZombies = new List<IZombieModel>();
+        private readonly List<IZombieModel> _cachedZombies = new List<IZombieModel>();
+
+        private readonly List<RoundConfig> _roundConfigs = new List<RoundConfig>();
+        private int _currentRound;
         public IPlayerModel Player { get; private set; } = new PlayerModel();
+
+        public LevelModel(List<RoundConfig> roundConfigs)
+        {
+            _roundConfigs = roundConfigs;
+        }
 
         public IZombieModel GetNewZombie()
         {
@@ -32,6 +43,19 @@ namespace Project.Scripts.Area.LevelManager.Model
             }
         }
 
+        public bool TryZombieSpawn()
+        {
+            var isSpawnAllowed = _activeZombies.Count < _roundConfigs[_currentRound].MaxZombiesInGame;
+            if (isSpawnAllowed)
+            {
+                var zombieConfig = _roundConfigs[_currentRound].ZombieConfigs[0];
+                _roundConfigs[_currentRound].ZombieConfigs.Remove(zombieConfig);
+                ZombieSpawned?.Invoke(GetNewZombie());
+            }
+
+            return isSpawnAllowed;
+        }
+
         private void OnZombieRemoved(IZombieModel zombieModel)
         {
             ZombieRemoved?.Invoke(zombieModel);
@@ -42,6 +66,7 @@ namespace Project.Scripts.Area.LevelManager.Model
         public void StartLevel()
         {
             Player = new PlayerModel();
+            RoundStarted?.Invoke(_roundConfigs[_currentRound]);
         }
     }
 }

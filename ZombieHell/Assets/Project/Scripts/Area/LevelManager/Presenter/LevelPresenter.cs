@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Project.Scripts.Area.LevelManager.Model;
 using Project.Scripts.Area.LevelManager.View;
 using Project.Scripts.Area.Player.Presenter;
+using Project.Scripts.Area.Round;
 using Project.Scripts.Area.Zombie.Model;
 using Project.Scripts.Area.Zombie.Presenter;
 
@@ -22,18 +23,23 @@ namespace Project.Scripts.Area.LevelManager.Presenter
             _view = levelView;
             _model = levelModel;
             _playerPresenter = new PlayerPresenter(_view.CreatePlayer(), _model.Player);
-            _zombiePresenters.Add(new ZombiePresenter(_view.GetNewZombie(), _model.GetNewZombie()));
             AddListeners();
         }
 
         private void AddListeners()
         {
             _model.ZombieRemoved += OnZombieModelRemoved;
+            _model.RoundStarted += OnRoundStarted;
+            _view.PreparedSpawnZombie += OnPreparedZombieSpawn;
+            _model.ZombieSpawned += OnZombieSpawned;
         }
 
         private void RemoveListeners()
         {
             _model.ZombieRemoved -= OnZombieModelRemoved;
+            _model.RoundStarted -= OnRoundStarted;
+            _view.PreparedSpawnZombie -= OnPreparedZombieSpawn;
+            _model.ZombieSpawned -= OnZombieSpawned;
         }
 
         private void OnZombieModelRemoved(IZombieModel model)
@@ -47,6 +53,21 @@ namespace Project.Scripts.Area.LevelManager.Presenter
                     return;
                 }
             }
+        }
+
+        private void OnRoundStarted(RoundConfig roundConfig)
+        {
+            _view.StartZombieSpawning(roundConfig);
+        }
+
+        private void OnPreparedZombieSpawn()
+        {
+            _model.TryZombieSpawn();
+        }
+
+        private void OnZombieSpawned(IZombieModel model)
+        {
+            _zombiePresenters.Add(new ZombiePresenter(_view.GetNewZombie(), model));
         }
 
         public void Dispose()

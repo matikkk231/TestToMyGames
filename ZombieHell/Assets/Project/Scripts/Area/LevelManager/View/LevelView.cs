@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Project.Scripts.Area.Player.View;
+using Project.Scripts.Area.Round;
 using Project.Scripts.Area.Zombie.View;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,12 +10,18 @@ namespace Project.Scripts.Area.LevelManager.View
 {
     public class LevelView : MonoBehaviour, ILevelView
     {
+        public Action PreparedSpawnZombie { get; set; }
+
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private GameObject _zombiePrefab;
         [SerializeField] private GameObject _floor;
         private readonly List<IZombieView> _cachedZombies = new List<IZombieView>();
         private readonly List<IZombieView> _activeZombies = new List<IZombieView>();
         private IPlayerView _playerView;
+
+        private float _timeTillNextSpawn;
+        private float _timeBetweenZombieSpawn;
+        private bool _isZombieSpawningStarted;
 
         private void Awake()
         {
@@ -27,12 +34,27 @@ namespace Project.Scripts.Area.LevelManager.View
             }
         }
 
+        private void Update()
+        {
+            if (!_isZombieSpawningStarted)
+            {
+                return;
+            }
+
+            _timeTillNextSpawn -= Time.deltaTime;
+            if (_timeTillNextSpawn < 0)
+            {
+                PreparedSpawnZombie?.Invoke();
+            }
+        }
+
         public IPlayerView CreatePlayer()
         {
             var playerView = Instantiate(_playerPrefab).GetComponent<IPlayerView>();
             _playerView = playerView;
             return playerView;
         }
+
 
         public IZombieView GetNewZombie()
         {
@@ -45,6 +67,8 @@ namespace Project.Scripts.Area.LevelManager.View
                 zombie.Position = new Vector3(0, 0, random);
                 zombie.TargetToChase = _playerView.Transform;
                 zombie.Removed += OnZombieRemoved;
+                zombie.SetActive(true);
+                _timeTillNextSpawn = _timeBetweenZombieSpawn;
                 return zombie;
             }
 
@@ -54,7 +78,16 @@ namespace Project.Scripts.Area.LevelManager.View
             zombieView.TargetToChase = _playerView.Transform;
             _activeZombies.Add(zombieView);
             zombieView.Removed += OnZombieRemoved;
+            zombieView.SetActive(true);
+            _timeTillNextSpawn = _timeBetweenZombieSpawn;
             return zombieView;
+        }
+
+        public void StartZombieSpawning(RoundConfig roundConfig)
+        {
+            _timeBetweenZombieSpawn = roundConfig.TimeBetweenZombieSpawn;
+            _timeTillNextSpawn = _timeBetweenZombieSpawn;
+            _isZombieSpawningStarted = true;
         }
 
         private void OnZombieRemoved(IZombieView zombie)
