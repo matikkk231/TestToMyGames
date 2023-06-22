@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20a65f14293643ac8aea1541ca268cb1, type: 3}
-  m_Name: Round_1
+  m_Name: Round_2
   m_EditorClassIdentifier: 
   TimeBetweenZombieSpawn: 1
   MaxZombiesInGame: 7

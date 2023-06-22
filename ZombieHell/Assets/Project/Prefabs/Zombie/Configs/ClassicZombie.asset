@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ClassicZombie
   m_EditorClassIdentifier: 
   Health: 3
+  DamageAmount: 1

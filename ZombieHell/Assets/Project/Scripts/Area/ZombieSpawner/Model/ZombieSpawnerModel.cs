@@ -46,6 +46,7 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
         public void StartZombieSpawning(RoundConfig roundConfig)
         {
             _roundConfig = roundConfig;
+            _currentZombie = 0;
             ZombieSpawningStarted?.Invoke(_roundConfig);
         }
 

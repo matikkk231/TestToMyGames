@@ -332,6 +332,7 @@ MonoBehaviour:
   _levelManagerPrefab: {fileID: 5443871937536777284, guid: 37ce6a888a58b9c4889b39886ad44305, type: 3}
   _roundConfigs:
   - {fileID: 11400000, guid: 278c0cc90c1c9b242b6ea56a6ac3a9a6, type: 2}
+  - {fileID: 11400000, guid: 96267aea305d0ba498fec802e099657e, type: 2}
 --- !u!4 &2107418328
 Transform:
   m_ObjectHideFlags: 0
