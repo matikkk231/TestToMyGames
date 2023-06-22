@@ -8,11 +8,10 @@ namespace Project.Scripts.Area.Zombie.Model
         public Action Died { get; set; }
         public Action<IZombieModel> Removed { get; set; }
 
-        public int Health { get; private set; }
+        public int Health { get; set; }
 
         public ZombieModel()
         {
-            Health = 10;
         }
 
         public void GetDamage(int damage)
