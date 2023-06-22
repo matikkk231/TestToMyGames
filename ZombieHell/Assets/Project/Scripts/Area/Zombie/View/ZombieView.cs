@@ -7,6 +7,13 @@ namespace Project.Scripts.Area.Zombie.View
     public class ZombieView : MonoBehaviour, IZombieView
     {
         public Action<int> Damaged { get; set; }
+        public Action<IZombieView> Removed { get; set; }
+
+        public Vector3 Position
+        {
+            get => transform.position;
+            set => transform.position = value;
+        }
 
         [SerializeField] private Rigidbody _rigidbody;
         private const float _speed = 2;
@@ -31,6 +38,11 @@ namespace Project.Scripts.Area.Zombie.View
             _timeTillReadyAttack -= Time.deltaTime;
         }
 
+        public void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
+        }
+
         public void ChaseTarget()
         {
             _rigidbody.velocity =
@@ -40,7 +52,6 @@ namespace Project.Scripts.Area.Zombie.View
         public void GetDamage(int damage)
         {
             Damaged?.Invoke(damage);
-            Debug.Log("damaged");
         }
 
         private void LookAtTarget()
