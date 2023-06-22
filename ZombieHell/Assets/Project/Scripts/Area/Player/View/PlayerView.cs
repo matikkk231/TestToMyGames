@@ -37,19 +37,16 @@ namespace Project.Scripts.Area.Player.View
             LookAtMouse();
         }
 
-        // better to think about more productive decision
         private void LookAtMouse()
         {
             RaycastHit hit;
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                var playerView = hit.collider.GetComponent<PlayerView>();
-                var zombieView = hit.collider.GetComponent<ZombieView>();
-                if (playerView == null && zombieView == null)
-                {
-                    transform.LookAt(hit.point);
-                }
+                Transform transform1;
+                (transform1 = transform).LookAt(hit.point);
+                var oldRotation = transform1.rotation;
+                transform1.rotation = new Quaternion(0, oldRotation.y, 0, oldRotation.w);
             }
         }
 
