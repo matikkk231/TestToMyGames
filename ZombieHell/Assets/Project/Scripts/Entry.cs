@@ -5,6 +5,8 @@ using Project.Scripts.Area.LevelManager.Presenter;
 using Project.Scripts.Area.LevelManager.View;
 using Project.Scripts.Area.MainMenu.View;
 using Project.Scripts.Area.Round;
+using Project.Scripts.Base.AdoioService.View;
+using Project.Scripts.Base.AudioService.View;
 using UnityEngine;
 
 namespace Project.Scripts
@@ -16,6 +18,7 @@ namespace Project.Scripts
         [SerializeField] private List<RoundConfig> _roundConfigs;
         private ILevelModel _levelModel;
         private IMainMenuView _mainMenuView;
+        private IAudioServiceView _audioServiceView;
 
         private readonly List<IDisposable> _disposables = new List<IDisposable>();
 
@@ -25,6 +28,9 @@ namespace Project.Scripts
             var levelView = Instantiate(_levelManagerPrefab).GetComponent<ILevelView>();
             var levelModel = new LevelModel(_roundConfigs);
             _levelModel = levelModel;
+            var audioServiceObject = Instantiate(new GameObject()).AddComponent<AudioServiceView>();
+            _audioServiceView = audioServiceObject.GetComponent<AudioServiceView>();
+            levelView.AddAudioService(_audioServiceView);
             _disposables.Add(new LevelPresenter(levelView, levelModel));
             AddListeners();
             levelModel.StartLevel();

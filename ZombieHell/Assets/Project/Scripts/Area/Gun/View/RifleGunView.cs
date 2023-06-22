@@ -1,5 +1,6 @@
 using System;
 using Project.Scripts.Area.Zombie.View;
+using Project.Scripts.Base.AdoioService.View;
 using UnityEngine;
 
 namespace Project.Scripts.Area.Gun.View
@@ -8,9 +9,12 @@ namespace Project.Scripts.Area.Gun.View
     {
         public Action AttackPressed { get; set; }
 
-        private const float _shootingInterval = 0.2f;
+        [SerializeField] private float _shootingInterval = 0.2f;
+        [SerializeField] private AudioClip _shootSound;
+
         private float _timeTillGunReady;
         private Vector3 _attackDirection;
+        private IAudioServiceView _audioServiceView;
 
         public void Attack(int damage)
         {
@@ -30,7 +34,13 @@ namespace Project.Scripts.Area.Gun.View
                 }
             }
 
+            _audioServiceView.Play(_shootSound);
             _timeTillGunReady = _shootingInterval;
+        }
+
+        public void AddAudioService(IAudioServiceView audioServiceView)
+        {
+            _audioServiceView = audioServiceView;
         }
 
         private bool CheckIsAttackPressed()

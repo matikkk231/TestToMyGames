@@ -1,5 +1,6 @@
 using System;
 using Project.Scripts.Area.Gun.View;
+using Project.Scripts.Base.AdoioService.View;
 using UnityEngine;
 
 namespace Project.Scripts.Area.Player.View
@@ -11,5 +12,6 @@ namespace Project.Scripts.Area.Player.View
         IGunView Gun { get; }
 
         public void GetDamage(int damage);
+        public void AddAudioService(IAudioServiceView audioServiceView);
     }
 }

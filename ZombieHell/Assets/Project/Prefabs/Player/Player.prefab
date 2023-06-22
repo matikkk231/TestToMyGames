@@ -496,6 +496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6fea1113fd48ceba8d6d5a89d90762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shootingInterval: 0.2
+  _shootSound: {fileID: 8300000, guid: 8401456349c492a489ed90469e317e43, type: 3}
 --- !u!1 &8294838538960152117
 GameObject:
   m_ObjectHideFlags: 0

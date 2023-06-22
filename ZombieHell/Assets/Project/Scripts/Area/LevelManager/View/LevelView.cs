@@ -1,6 +1,7 @@
 using System;
 using Project.Scripts.Area.Player.View;
 using Project.Scripts.Area.ZombieSpawner.View;
+using Project.Scripts.Base.AdoioService.View;
 using UnityEngine;
 
 namespace Project.Scripts.Area.LevelManager.View
@@ -13,6 +14,7 @@ namespace Project.Scripts.Area.LevelManager.View
         [SerializeField] private ZombieSpawnerView _zombieSpawner;
         [SerializeField] private GameObject _floor;
         private IPlayerView _playerView;
+        private IAudioServiceView _audioServiceView;
 
         public IZombieSpawnerView ZombieSpawner => _zombieSpawner;
 
@@ -34,9 +36,16 @@ namespace Project.Scripts.Area.LevelManager.View
                 var playerView = Instantiate(_playerPrefab).GetComponent<IPlayerView>();
                 _playerView = playerView;
             }
+
             _zombieSpawner.TargetToChase = _playerView.Transform;
+            _playerView.AddAudioService(_audioServiceView);
 
             return _playerView;
+        }
+
+        public void AddAudioService(IAudioServiceView audioServiceView)
+        {
+            _audioServiceView = audioServiceView;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Project.Scripts.Area.Gun.View;
 using Project.Scripts.Area.Zombie.View;
+using Project.Scripts.Base.AdoioService.View;
 using UnityEngine;
 
 namespace Project.Scripts.Area.Player.View
@@ -13,6 +14,7 @@ namespace Project.Scripts.Area.Player.View
         [SerializeField] private RifleGunView _gunView;
         private const float _speed = 4;
         private Vector3 _moveDirection;
+        private IAudioServiceView _audioServiceView;
 
         public Transform Transform
         {
@@ -24,6 +26,12 @@ namespace Project.Scripts.Area.Player.View
         public void GetDamage(int damage)
         {
             Damaged?.Invoke(damage);
+        }
+
+        public void AddAudioService(IAudioServiceView audioServiceView)
+        {
+            _audioServiceView = audioServiceView;
+            _gunView.AddAudioService(_audioServiceView);
         }
 
         private void Update()
