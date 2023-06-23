@@ -12,6 +12,9 @@ namespace Project.Scripts.Area.ZombieSpawner.View
         public Action PreparedSpawnZombie { get; set; }
 
         [SerializeField] private GameObject _zombiePrefab;
+        [SerializeField] private float _minDistanceFromCenter;
+        [SerializeField] private float _maxDistanceFromCenter;
+        [SerializeField] private float _maxOffsetFromCenter;
         private readonly List<IZombieView> _cachedZombies = new List<IZombieView>();
         private readonly List<IZombieView> _activeZombies = new List<IZombieView>();
 
@@ -38,29 +41,50 @@ namespace Project.Scripts.Area.ZombieSpawner.View
 
         public IZombieView GetNewZombie()
         {
-            var random = Random.Range(10, 30);
             if (_cachedZombies.Count != 0)
             {
                 var zombie = _cachedZombies[0];
                 _cachedZombies.Remove(zombie);
                 _activeZombies.Add(zombie);
-                zombie.Position = new Vector3(0, 0, random);
-                zombie.TargetToChase = TargetToChase;
-                zombie.Removed += OnZombieRemoved;
-                zombie.SetActive(true);
+                InitializeZombie(zombie);
                 _timeTillNextSpawn = _timeBetweenZombieSpawn;
                 return zombie;
             }
 
             var zombieObject = Instantiate(_zombiePrefab);
-            zombieObject.transform.position = new Vector3(0, 0, random);
             var zombieView = zombieObject.GetComponent<IZombieView>();
-            zombieView.TargetToChase = TargetToChase;
             _activeZombies.Add(zombieView);
-            zombieView.Removed += OnZombieRemoved;
-            zombieView.SetActive(true);
+            InitializeZombie(zombieView);
             _timeTillNextSpawn = _timeBetweenZombieSpawn;
             return zombieView;
+        }
+
+        private void InitializeZombie(IZombieView zombie)
+        {
+            var sideToSpawn = Random.Range(1, 5);
+            var distanceFromCenter = Random.Range(_minDistanceFromCenter, _maxDistanceFromCenter);
+            var centerOffset = Random.Range(-_maxOffsetFromCenter, _maxOffsetFromCenter);
+
+            switch (sideToSpawn)
+            {
+                case 1:
+                    zombie.Position = new Vector3(centerOffset, 0, distanceFromCenter);
+                    break;
+                case 2:
+                    zombie.Position = new Vector3(-distanceFromCenter, 0, centerOffset);
+                    break;
+                case 3:
+                    zombie.Position = new Vector3(centerOffset, 0, -distanceFromCenter);
+                    break;
+                case 4:
+                    zombie.Position = new Vector3(distanceFromCenter, 0, centerOffset);
+                    break;
+                default: throw new Exception("there is no side less 1 or bigger 4");
+            }
+
+            zombie.TargetToChase = TargetToChase;
+            zombie.Removed += OnZombieRemoved;
+            zombie.SetActive(true);
         }
 
         private void OnZombieRemoved(IZombieView zombie)

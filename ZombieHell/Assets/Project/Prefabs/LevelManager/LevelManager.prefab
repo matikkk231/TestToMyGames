@@ -60,3 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombiePrefab: {fileID: 8559902809412787144, guid: 0f0896243efc7f9478876eb3927a2b12, type: 3}
+  _minDistanceFromCenter: 40
+  _maxDistanceFromCenter: 60
+  _maxOffsetFromCenter: 20

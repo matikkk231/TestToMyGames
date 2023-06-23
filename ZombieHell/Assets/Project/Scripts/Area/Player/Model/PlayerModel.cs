@@ -7,7 +7,7 @@ namespace Project.Scripts.Area.Player.Model
     {
         public Action Died { get; set; }
 
-        public int Health { get; set; }
+        public int Health { get; set; } = 1;
         public IGunModel Gun { get; }
 
         public PlayerModel()
