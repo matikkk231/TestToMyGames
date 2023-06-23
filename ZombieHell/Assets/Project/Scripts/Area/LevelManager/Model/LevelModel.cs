@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Project.Scripts.Area.Counter.Model;
 using Project.Scripts.Area.Player.Model;
 using Project.Scripts.Area.Round;
 using Project.Scripts.Area.ZombieSpawner.Model;
@@ -15,6 +16,7 @@ namespace Project.Scripts.Area.LevelManager.Model
         private readonly List<RoundConfig> _roundConfigs = new List<RoundConfig>();
         private int _currentRound;
         public IPlayerModel Player { get; private set; }
+        public ICounterModel Counter { get; }
         public IZombieSpawnerModel ZombieSpawner => _zombieSpawner;
 
         public LevelModel(List<RoundConfig> roundConfigs)
@@ -22,13 +24,17 @@ namespace Project.Scripts.Area.LevelManager.Model
             _roundConfigs = roundConfigs;
             Player = new PlayerModel();
             _zombieSpawner = new ZombieSpawnerModel();
-            Player.Died += OnPlayerDied;
+            _zombieSpawner.RemainedZombieChanged += OnRemainedZombiesChanged;
             _zombieSpawner.ZombieExpired += OnZombiesExpired;
+            Counter = new CounterModel();
+
+            Player.Died += OnPlayerDied;
         }
 
         private void StartNextRound()
         {
             _currentRound++;
+            Counter.CurrentRound = _currentRound;
             _zombieSpawner.StartZombieSpawning(_roundConfigs[_currentRound]);
         }
 
@@ -46,12 +52,19 @@ namespace Project.Scripts.Area.LevelManager.Model
                 return;
             }
 
+            Counter.RoundChanged?.Invoke(_currentRound);
             StartNextRound();
+        }
+
+        private void OnRemainedZombiesChanged(int amount)
+        {
+            Counter.RemainedZombies = amount;
         }
 
         public void StartLevel()
         {
             Player = new PlayerModel();
+            Counter.CurrentRound = _currentRound;
             _zombieSpawner.StartZombieSpawning(_roundConfigs[_currentRound]);
         }
     }

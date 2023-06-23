@@ -1,4 +1,4 @@
-using System;
+using Project.Scripts.Area.Counter.View;
 using Project.Scripts.Area.Player.View;
 using Project.Scripts.Area.ZombieSpawner.View;
 using Project.Scripts.Base.AdoioService.View;
@@ -8,15 +8,15 @@ namespace Project.Scripts.Area.LevelManager.View
 {
     public class LevelView : MonoBehaviour, ILevelView
     {
-        public Action PreparedSpawnZombie { get; set; }
-
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private ZombieSpawnerView _zombieSpawner;
         [SerializeField] private GameObject _floor;
+        [SerializeField] private CounterView _counter;
         private IPlayerView _playerView;
         private IAudioServiceView _audioServiceView;
 
         public IZombieSpawnerView ZombieSpawner => _zombieSpawner;
+        public ICounterView Counter => _counter;
 
         private void Awake()
         {

@@ -10,6 +10,7 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
         Action<RoundConfig> ZombieSpawningStarted { get; set; }
         Action<IZombieModel> ZombieRemoved { get; set; }
         Action<IZombieModel> ZombieSpawned { get; set; }
+        Action<int> RemainedZombieChanged { get; set; }
 
         void StartZombieSpawning(RoundConfig roundConfig);
         bool TryZombieSpawn();

@@ -12,8 +12,11 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
         public Action<RoundConfig> ZombieSpawningStarted { get; set; }
         public Action<IZombieModel> ZombieRemoved { get; set; }
         public Action<IZombieModel> ZombieSpawned { get; set; }
+        public Action<int> RemainedZombieChanged { get; set; }
+
         private RoundConfig _roundConfig;
-        private int _currentZombie;
+        private int _currentZombieIndex;
+        private int _zombiesKilled;
         private readonly List<IZombieModel> _activeZombies = new List<IZombieModel>();
         private readonly List<IZombieModel> _cachedZombies = new List<IZombieModel>();
 
@@ -25,28 +28,32 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
                 var zombie = _cachedZombies[0];
                 zombie.Health = config.Health;
                 _cachedZombies.Remove(zombie);
-                _activeZombies.Add(zombie);
-                zombie.Health = config.Health;
-                zombie.DamageAmount = config.DamageAmount;
-                zombie.Removed += OnZombieRemoved;
+                InitializeZombie(zombie, config);
                 return zombie;
             }
             else
             {
                 var zombie = new ZombieModel();
                 zombie.Health = config.Health;
-                _activeZombies.Add(zombie);
-                zombie.Removed += OnZombieRemoved;
-                zombie.Health = config.Health;
-                zombie.DamageAmount = config.DamageAmount;
+                InitializeZombie(zombie, config);
                 return zombie;
             }
+        }
+
+        private void InitializeZombie(IZombieModel zombie, ZombieConfig config)
+        {
+            _activeZombies.Add(zombie);
+            zombie.Removed += OnZombieRemoved;
+            zombie.Health = config.Health;
+            zombie.DamageAmount = config.DamageAmount;
         }
 
         public void StartZombieSpawning(RoundConfig roundConfig)
         {
             _roundConfig = roundConfig;
-            _currentZombie = 0;
+            _zombiesKilled = 0;
+            _currentZombieIndex = 0;
+            RemainedZombieChanged?.Invoke(roundConfig.ZombieConfigs.Count);
             ZombieSpawningStarted?.Invoke(_roundConfig);
         }
 
@@ -55,8 +62,7 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
             var isSpawnAllowed = _activeZombies.Count < _roundConfig.MaxZombiesInGame;
             if (isSpawnAllowed)
             {
-                _currentZombie++;
-                var isZombiesExpired = _currentZombie >= _roundConfig.ZombieConfigs.Count;
+                var isZombiesExpired = _currentZombieIndex >= _roundConfig.ZombieConfigs.Count;
                 if (isZombiesExpired)
                 {
                     if (_activeZombies.Count == 0)
@@ -67,7 +73,8 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
                     return false;
                 }
 
-                ZombieSpawned?.Invoke(GetNewZombie(_roundConfig.ZombieConfigs[_currentZombie]));
+                ZombieSpawned?.Invoke(GetNewZombie(_roundConfig.ZombieConfigs[_currentZombieIndex]));
+                _currentZombieIndex++;
             }
 
             return isSpawnAllowed;
@@ -76,6 +83,10 @@ namespace Project.Scripts.Area.ZombieSpawner.Model
         private void OnZombieRemoved(IZombieModel zombieModel)
         {
             ZombieRemoved?.Invoke(zombieModel);
+            zombieModel.Removed -= OnZombieRemoved;
+            _zombiesKilled++;
+
+            RemainedZombieChanged?.Invoke(_roundConfig.ZombieConfigs.Count - _zombiesKilled);
             _activeZombies.Remove(zombieModel);
             _cachedZombies.Add(zombieModel);
         }
