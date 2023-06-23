@@ -40,6 +40,7 @@ namespace Project.Scripts.Area.LevelManager.Model
 
         private void OnPlayerDied()
         {
+            Player.Died -= OnPlayerDied;
             LevelLoosed?.Invoke();
         }
 

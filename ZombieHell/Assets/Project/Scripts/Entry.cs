@@ -25,21 +25,35 @@ namespace Project.Scripts
         private void Awake()
         {
             _mainMenuView = Instantiate(_menuPrefab).GetComponent<IMainMenuView>();
+            
+            var audioServiceObject = Instantiate(new GameObject()).AddComponent<AudioServiceView>();
+            _audioServiceView = audioServiceObject.GetComponent<AudioServiceView>();
+            
             var levelView = Instantiate(_levelManagerPrefab).GetComponent<ILevelView>();
             var levelModel = new LevelModel(_roundConfigs);
             _levelModel = levelModel;
-            var audioServiceObject = Instantiate(new GameObject()).AddComponent<AudioServiceView>();
-            _audioServiceView = audioServiceObject.GetComponent<AudioServiceView>();
             levelView.AddAudioService(_audioServiceView);
+            
             _disposables.Add(new LevelPresenter(levelView, levelModel));
             AddListeners();
             levelModel.StartLevel();
+        }
+
+        private void OnDestroy()
+        {
+            Dispose();
         }
 
         private void AddListeners()
         {
             _levelModel.LevelWon += OnLevelWon;
             _levelModel.LevelLoosed += OnLevelLoosed;
+        }
+
+        private void RemoveListeners()
+        {
+            _levelModel.LevelWon -= OnLevelWon;
+            _levelModel.LevelLoosed -= OnLevelLoosed;
         }
 
 
@@ -60,6 +74,8 @@ namespace Project.Scripts
             {
                 disposable.Dispose();
             }
+
+            RemoveListeners();
         }
     }
 }

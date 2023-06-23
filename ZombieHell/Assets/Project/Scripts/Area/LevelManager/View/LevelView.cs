@@ -14,6 +14,7 @@ namespace Project.Scripts.Area.LevelManager.View
         [SerializeField] private CounterView _counter;
         [SerializeField] private Vector3 _maxPlayerPosition;
         [SerializeField] private Vector3 _minPlayerPosition;
+        
         private IPlayerView _playerView;
         private IAudioServiceView _audioServiceView;
 
