@@ -32,6 +32,12 @@ namespace Project.Scripts.Area.Zombie.Model
             }
         }
 
+        public int StartHealth
+        {
+            get => _startHealth;
+            set => _startHealth = value;
+        }
+
         public int DamageAmount { get; set; }
 
         public void GetDamage(int damage)

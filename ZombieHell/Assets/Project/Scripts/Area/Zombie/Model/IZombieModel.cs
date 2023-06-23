@@ -9,7 +9,8 @@ namespace Project.Scripts.Area.Zombie.Model
         public Action<int> Attacked { get; set; }
         public Action<int, int> HealthChanged { get; set; }
 
-        public int Health { get; set; }
+        public int Health { get;set; }
+        public int StartHealth { get; set; }
         public int DamageAmount { get; set; }
 
         public void GetDamage(int damage);

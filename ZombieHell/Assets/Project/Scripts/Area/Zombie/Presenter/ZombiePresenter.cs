@@ -13,6 +13,7 @@ namespace Project.Scripts.Area.Zombie.Presenter
         {
             _view = view;
             Model = model;
+            OnHealthChanged(model.Health, model.StartHealth);
             AddListeners();
         }
 
