@@ -22,6 +22,7 @@ namespace Project.Scripts.Area.Zombie.Presenter
             _view.Damaged += OnDamaged;
             _view.TargetFound += OnTargetFound;
             Model.Attacked += OnModelAttacked;
+            Model.HealthChanged += OnHealthChanged;
         }
 
         private void RemoveListeners()
@@ -30,6 +31,7 @@ namespace Project.Scripts.Area.Zombie.Presenter
             _view.Damaged -= OnDamaged;
             _view.TargetFound -= OnTargetFound;
             Model.Attacked -= OnModelAttacked;
+            Model.HealthChanged -= OnHealthChanged;
         }
 
         private void OnModelDied()
@@ -50,6 +52,11 @@ namespace Project.Scripts.Area.Zombie.Presenter
         private void OnModelAttacked(int damage)
         {
             _view.Attack(damage);
+        }
+
+        private void OnHealthChanged(int current, int start)
+        {
+            _view.ShowHealth(current, start);
         }
 
         public void Dispose()

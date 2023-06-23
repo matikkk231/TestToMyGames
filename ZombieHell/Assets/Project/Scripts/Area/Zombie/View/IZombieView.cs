@@ -15,5 +15,6 @@ namespace Project.Scripts.Area.Zombie.View
         public void ChaseTarget();
         public void GetDamage(int damage);
         public void Attack(int damage);
+        public void ShowHealth(int current, int startHealth);
     }
 }

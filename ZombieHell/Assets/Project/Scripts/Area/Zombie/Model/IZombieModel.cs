@@ -7,6 +7,7 @@ namespace Project.Scripts.Area.Zombie.Model
         public Action Died { get; set; }
         public Action<IZombieModel> Removed { get; set; }
         public Action<int> Attacked { get; set; }
+        public Action<int, int> HealthChanged { get; set; }
 
         public int Health { get; set; }
         public int DamageAmount { get; set; }

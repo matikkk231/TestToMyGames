@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.Area.HealthBar;
 using Project.Scripts.Area.Player.View;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Project.Scripts.Area.Zombie.View
         }
 
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private HealthBarView _healthBar;
         private IPlayerView _foundPlayer;
         private const float _speed = 2;
         private const float _attackDisctance = 2;
@@ -65,6 +67,11 @@ namespace Project.Scripts.Area.Zombie.View
         {
             _foundPlayer.GetDamage(damage);
             _foundPlayer = null;
+        }
+
+        public void ShowHealth(int current, int startHealth)
+        {
+            _healthBar.ShowBar(current, startHealth);
         }
 
         private void LookAtTarget()
