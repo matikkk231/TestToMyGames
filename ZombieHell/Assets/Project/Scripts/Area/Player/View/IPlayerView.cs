@@ -13,5 +13,6 @@ namespace Project.Scripts.Area.Player.View
 
         public void GetDamage(int damage);
         public void AddAudioService(IAudioServiceView audioServiceView);
+        public void SetMovingArea(Vector3 minPosition, Vector3 maxPosition);
     }
 }

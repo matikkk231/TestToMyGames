@@ -49,6 +49,8 @@ MonoBehaviour:
   _zombieSpawner: {fileID: 5977810087377221257}
   _floor: {fileID: 501382293425823527, guid: 221f3106fab9a374cb9fcb5e2ce8250e, type: 3}
   _counter: {fileID: 935020773614023607}
+  _maxPlayerPosition: {x: 20, y: 0, z: 20}
+  _minPlayerPosition: {x: -20, y: 0, z: -20}
 --- !u!114 &5977810087377221257
 MonoBehaviour:
   m_ObjectHideFlags: 0

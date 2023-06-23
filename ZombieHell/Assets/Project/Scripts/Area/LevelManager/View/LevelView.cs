@@ -12,6 +12,8 @@ namespace Project.Scripts.Area.LevelManager.View
         [SerializeField] private ZombieSpawnerView _zombieSpawner;
         [SerializeField] private GameObject _floor;
         [SerializeField] private CounterView _counter;
+        [SerializeField] private Vector3 _maxPlayerPosition;
+        [SerializeField] private Vector3 _minPlayerPosition;
         private IPlayerView _playerView;
         private IAudioServiceView _audioServiceView;
 
@@ -20,9 +22,9 @@ namespace Project.Scripts.Area.LevelManager.View
 
         private void Awake()
         {
-            for (int x = -30; x < 30; x += 10)
+            for (int x = -50; x < 50; x += 10)
             {
-                for (int z = -30; z < 30; z += 10)
+                for (int z = -50; z < 50; z += 10)
                 {
                     Instantiate(_floor).transform.position = new Vector3(x, 0, z);
                 }
@@ -39,6 +41,7 @@ namespace Project.Scripts.Area.LevelManager.View
 
             _zombieSpawner.TargetToChase = _playerView.Transform;
             _playerView.AddAudioService(_audioServiceView);
+            _playerView.SetMovingArea(_minPlayerPosition, _maxPlayerPosition);
 
             return _playerView;
         }

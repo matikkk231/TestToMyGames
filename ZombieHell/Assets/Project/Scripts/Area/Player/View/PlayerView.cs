@@ -13,6 +13,8 @@ namespace Project.Scripts.Area.Player.View
         [SerializeField] private Animator _playerAnimator;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private RifleGunView _gunView;
+        private Vector3 _minMovingPosition;
+        private Vector3 _maxMovingPosition;
         private const float _speed = 4;
         private Vector3 _moveDirection;
         private IAudioServiceView _audioServiceView;
@@ -34,6 +36,12 @@ namespace Project.Scripts.Area.Player.View
         {
             _audioServiceView = audioServiceView;
             _gunView.AddAudioService(_audioServiceView);
+        }
+
+        public void SetMovingArea(Vector3 minPosition, Vector3 maxPosition)
+        {
+            _maxMovingPosition = maxPosition;
+            _minMovingPosition = minPosition;
         }
 
         private void Update()
@@ -79,25 +87,29 @@ namespace Project.Scripts.Area.Player.View
         private void DeclareMoveDirection()
         {
             _moveDirection = Vector3.zero;
-            if (Input.GetKey(KeyCode.A))
+            var isOutBorderLeft = transform.position.x < _minMovingPosition.x;
+            if (Input.GetKey(KeyCode.A) && !isOutBorderLeft)
             {
                 var oldDirection = _moveDirection;
                 _moveDirection = new Vector3(-1, oldDirection.y, oldDirection.z);
             }
 
-            if (Input.GetKey(KeyCode.D))
+            var isOutBorderRight = transform.position.x > _maxMovingPosition.x;
+            if (Input.GetKey(KeyCode.D) && !isOutBorderRight)
             {
                 var oldDirection = _moveDirection;
                 _moveDirection = new Vector3(1, oldDirection.y, oldDirection.z);
             }
 
-            if (Input.GetKey(KeyCode.W))
+            var isOutBorderUpper = transform.position.y > _maxMovingPosition.y;
+            if (Input.GetKey(KeyCode.W) && !isOutBorderUpper)
             {
                 var oldDirection = _moveDirection;
                 _moveDirection = new Vector3(oldDirection.x, oldDirection.y, 1);
             }
 
-            if (Input.GetKey(KeyCode.S))
+            var isOutBorderUnder = transform.position.y < _minMovingPosition.y;
+            if (Input.GetKey(KeyCode.S) && !isOutBorderUnder)
             {
                 var oldDirection = _moveDirection;
                 _moveDirection = new Vector3(oldDirection.x, oldDirection.y, -1);
