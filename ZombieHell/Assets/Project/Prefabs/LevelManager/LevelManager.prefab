@@ -49,8 +49,8 @@ MonoBehaviour:
   _zombieSpawner: {fileID: 5977810087377221257}
   _floor: {fileID: 501382293425823527, guid: 221f3106fab9a374cb9fcb5e2ce8250e, type: 3}
   _counter: {fileID: 935020773614023607}
-  _maxPlayerPosition: {x: 20, y: 0, z: 20}
-  _minPlayerPosition: {x: -20, y: 0, z: -20}
+  _maxPlayerPosition: {x: 10, y: 0, z: 10}
+  _minPlayerPosition: {x: -10, y: 0, z: -10}
 --- !u!114 &5977810087377221257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,8 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _zombiePrefab: {fileID: 8559902809412787144, guid: 0f0896243efc7f9478876eb3927a2b12, type: 3}
-  _minDistanceFromCenter: 25
-  _maxDistanceFromCenter: 35
+  _minDistanceFromCenter: 15
+  _maxDistanceFromCenter: 20
   _maxOffsetFromCenter: 10
 --- !u!1001 &7806458042213365875
 PrefabInstance:

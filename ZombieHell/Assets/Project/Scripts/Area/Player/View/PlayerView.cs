@@ -101,14 +101,14 @@ namespace Project.Scripts.Area.Player.View
                 _moveDirection = new Vector3(1, oldDirection.y, oldDirection.z);
             }
 
-            var isOutBorderUpper = transform.position.y > _maxMovingPosition.y;
+            var isOutBorderUpper = transform.position.z > _maxMovingPosition.z;
             if (Input.GetKey(KeyCode.W) && !isOutBorderUpper)
             {
                 var oldDirection = _moveDirection;
                 _moveDirection = new Vector3(oldDirection.x, oldDirection.y, 1);
             }
 
-            var isOutBorderUnder = transform.position.y < _minMovingPosition.y;
+            var isOutBorderUnder = transform.position.z < _minMovingPosition.z;
             if (Input.GetKey(KeyCode.S) && !isOutBorderUnder)
             {
                 var oldDirection = _moveDirection;
