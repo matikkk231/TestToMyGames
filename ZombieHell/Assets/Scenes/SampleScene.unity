@@ -250,6 +250,7 @@ MonoBehaviour:
   _roundConfigs:
   - {fileID: 11400000, guid: 278c0cc90c1c9b242b6ea56a6ac3a9a6, type: 2}
   - {fileID: 11400000, guid: 96267aea305d0ba498fec802e099657e, type: 2}
+  - {fileID: 11400000, guid: a59374552de2e2245b9cba8f98a60d3e, type: 2}
 --- !u!4 &2107418328
 Transform:
   m_ObjectHideFlags: 0

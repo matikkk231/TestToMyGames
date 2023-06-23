@@ -12,6 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a65f14293643ac8aea1541ca268cb1, type: 3}
   m_Name: Round_3
   m_EditorClassIdentifier: 
-  TimeBetweenZombieSpawn: 0
-  MaxZombiesInGame: 0
-  ZombieConfigs: []
+  TimeBetweenZombieSpawn: 1
+  MaxZombiesInGame: 15
+  ZombieConfigs:
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
+  - {fileID: 11400000, guid: 65bfc3850418537489ec9bdd90bcfa0a, type: 2}
