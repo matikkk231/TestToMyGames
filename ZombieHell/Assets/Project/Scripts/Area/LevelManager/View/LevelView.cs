@@ -22,9 +22,17 @@ namespace Project.Scripts.Area.LevelManager.View
 
         private void Awake()
         {
-            for (int x = -50; x < 50; x += 10)
+            BuildFloors();
+        }
+
+        private void BuildFloors()
+        {
+            Vector3Int minMapPosition = new Vector3Int(-50, 0, -50);
+            Vector3Int maxMapPosition = new Vector3Int(50, 0, 50);
+            int distanceBetweenFloors = 10;
+            for (int x = minMapPosition.x; x < maxMapPosition.x; x += distanceBetweenFloors)
             {
-                for (int z = -50; z < 50; z += 10)
+                for (int z = minMapPosition.z; z < maxMapPosition.z; z += distanceBetweenFloors)
                 {
                     Instantiate(_floor).transform.position = new Vector3(x, 0, z);
                 }
